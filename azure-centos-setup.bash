@@ -46,17 +46,17 @@ grubby \
 	--args='rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0'
 
 # step 9 (no need to do this)
-# grub2-mkconfig -o /boot/grub2/grub.cfg
+grub2-mkconfig -o /boot/grub2/grub.cfg
 
-sudo grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+# sudo grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
 
 # step 10
-cat << 'EOF' > /etc/dracut.conf.d/azure.conf
-add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
+# cat << 'EOF' > /etc/dracut.conf.d/azure.conf
+# add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
-EOF
+# EOF
 
-dracut -fv
+# dracut -fv
 
 # step 11
 dnf -y install python-pyasn1 WALinuxAgent
@@ -110,4 +110,4 @@ cloud-init clean
 waagent -force -deprovision+user
 rm -f ~/.bash_history
 export HISTSIZE=0
-systemctl  poweroff
+# systemctl  poweroff
