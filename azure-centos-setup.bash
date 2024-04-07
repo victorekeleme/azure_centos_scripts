@@ -51,13 +51,15 @@ ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 dnf -y upgrade
 
 # # step 8
-# grubby \
-# 	--update-kernel=ALL \
-# 	--remove-args='rhgb quiet crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M' \
-# 	--args='rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0'
+grubby \
+	--update-kernel=ALL \
+	--remove-args='rhgb quiet crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M' \
+	--args='rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0'
 
-# # step 9 (no need to do this)
-# #grub2-mkconfig -o /boot/grub2/grub.cfg
+# step 9 (no need to do this)
+# grub2-mkconfig -o /boot/grub2/grub.cfg
+
+sudo grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
 
 # # step 10
 # cat << 'EOF' > /etc/dracut.conf.d/azure.conf
