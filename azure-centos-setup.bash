@@ -55,11 +55,11 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 # add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
 # EOF
-
 # dracut -fv
 
+
 # step 11
-dnf -y install python-pyasn1 WALinuxAgent
+dnf -y install WALinuxAgent
 systemctl enable waagent
 
 # step 12
