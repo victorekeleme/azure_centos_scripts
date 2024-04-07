@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # verbosity
 set -x
 
@@ -26,50 +25,42 @@ NM_CONTROLLED=no
 
 EOF
 
-
 sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-cat << 'EOF' > /etc/yum.repos.d/CentOS-Base.repo
-[appstream]
-name=CentOS-$releasever - openlogic packages for $basearch
-baseurl=https://mirror.stream.centos.org/$releasever-stream/AppStream/$basearch/os/repodata/
-enabled=1
-gpgcheck=0
+sudo chkconfig network on
 
-EOF
-
-
-sudo yum clean all
-
-sudo yum -y update
+sudo dnf -y update
 
 grubby \
-	--update-kernel=ALL \
-	--remove-args='rhgb quiet crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M' \
-	--args='rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0'
-
-#grub2-mkconfig -o /boot/grub2/grub.cfg
-
-sudo grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+    --update-kernel=ALL \
+    --remove-args='rhgb quiet crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M' \
+    --args='rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0'
 
 
-sudo yum install python-pyasn1 WALinuxAgent
+grub2-mkconfig -o /boot/grub2/grub.cfg
+
+# sudo grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+
+sudo dnf install -y python-pyasn1 WALinuxAgent
+
 sudo systemctl enable waagent
 
-sudo yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
+sudo chkconfig waagent on
 
+systemctl start waagent
+
+sudo dnf install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
 
 sudo sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=auto/g' /etc/waagent.conf
 sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
 sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
-
 
 sudo echo "Adding mounts and disk_setup to init stage"
 sudo sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
 sudo sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
 sudo sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
 sudo sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
-
 
 sudo echo "Allow only Azure datasource, disable fetching network setting via IMDS"
 
@@ -81,9 +72,9 @@ datasource:
 EOF
 
 if [[ -f /mnt/swapfile ]]; then
-echo Removing swapfile - RHEL uses a swapfile by default
-swapoff /mnt/swapfile
-rm /mnt/swapfile -f
+    echo Removing swapfile - RHEL uses a swapfile by default
+    swapoff /mnt/swapfile
+    rm /mnt/swapfile -f
 fi
 
 echo "Add console log file"
@@ -95,10 +86,8 @@ cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
 output: {all: '| tee -a /var/log/cloud-init-output.log'}
 EOF
 
-
 sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
 sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
-
 
 sudo rm -f /var/log/waagent.log
 sudo cloud-init clean
@@ -107,4 +96,3 @@ sudo rm -f ~/.bash_history
 sudo export HISTSIZE=0
 
 #systemctl  poweroff
-
