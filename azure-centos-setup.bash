@@ -35,9 +35,8 @@ nmcli conn migrate
 ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
 # step 6
-
-dnf config-manager --set-enabled crb
-dnf install epel-release epel-next-release
+# dnf config-manager --set-enabled crb
+# dnf install epel-release epel-next-release
 
 # cat << 'EOF' > /etc/yum.repos.d/CentOS-Base.repo
 # [base]
@@ -48,8 +47,8 @@ dnf install epel-release epel-next-release
 
 # EOF
 
-# # step 7
-# dnf -y upgrade
+# step 7
+dnf -y upgrade
 
 # # step 8
 # grubby \
