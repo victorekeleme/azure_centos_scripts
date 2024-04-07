@@ -34,15 +34,16 @@ nmcli conn migrate
 # step 5
 ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
-# # step 6
-# cat << 'EOF' > /etc/yum.repos.d/openlogic.repo
-# [openlogic]
-# name=CentOS-8 - openlogic packages for $basearch
-# baseurl=http://olcentgbl.trafficmanager.net/openlogic/8/openlogic/$basearch/
-# enabled=1
-# gpgcheck=0
+# step 6
 
-# EOF
+cat << 'EOF' > /etc/yum.repos.d/CentOS-Base.repo
+[base]
+name=CentOS-$releasever - appstream packages for $basearch
+baseurl=https://mirror.stream.centos.org/$releasever-stream/AppStream/$basearch/os/repodata/
+enabled=1
+gpgcheck=0
+
+EOF
 
 # # step 7
 # dnf -y upgrade
