@@ -30,9 +30,9 @@ EOF
 sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
 cat << 'EOF' > /etc/yum.repos.d/CentOS-Base.repo
-[openlogic]
+[appstream]
 name=CentOS-$releasever - openlogic packages for $basearch
-baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
+baseurl=https://mirror.stream.centos.org/$releasever-stream/AppStream/$basearch/os/repodata/
 enabled=1
 gpgcheck=0
 
