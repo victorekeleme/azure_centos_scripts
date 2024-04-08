@@ -28,8 +28,6 @@ EOF
 sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-sudo chkconfig network on
-
 sudo dnf -y update
 
 grubby \
@@ -49,8 +47,6 @@ sudo systemctl enable sshd
 sudo dnf install -y python-pyasn1 WALinuxAgent
 
 sudo systemctl enable waagent
-
-sudo chkconfig waagent on
 
 systemctl start waagent
 
