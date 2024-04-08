@@ -55,6 +55,10 @@ sudo systemctl start waagent
 
 sudo dnf install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
 
+## Configure waagent for cloud-init
+sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+
 sudo echo "Adding mounts and disk_setup to init stage"
 sudo sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
 sudo sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
