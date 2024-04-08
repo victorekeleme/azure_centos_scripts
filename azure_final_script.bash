@@ -92,6 +92,6 @@ sudo rm -f /var/log/waagent.log
 sudo cloud-init clean
 sudo waagent -force -deprovision+user
 sudo rm -f ~/.bash_history
-sudo export HISTSIZE=0
+export HISTSIZE=0
 
 sudo systemctl  poweroff
