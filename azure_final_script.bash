@@ -90,7 +90,7 @@ sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waage
 # Clean up
 sudo rm -f /var/log/waagent.log
 sudo cloud-init clean
-sudo waagent -force -deprovision+user
+# sudo waagent -force -deprovision+user
 sudo rm -f ~/.bash_history
 sudo export HISTSIZE=0
 
