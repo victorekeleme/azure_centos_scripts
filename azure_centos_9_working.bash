@@ -30,12 +30,12 @@ sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
 sudo dnf -y update
 
-grubby \
+sudo grubby \
     --update-kernel=ALL \
     --remove-args='rhgb quiet crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M' \
     --args='rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0'
 
-grub2-mkconfig -o /boot/grub2/grub.cfg
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 # sudo grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
 
@@ -95,4 +95,4 @@ sudo waagent -force -deprovision+user
 sudo rm -f ~/.bash_history
 sudo export HISTSIZE=0
 
-systemctl  poweroff
+sudo systemctl  poweroff
