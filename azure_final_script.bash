@@ -34,6 +34,9 @@ NM_CONTROLLED=no
 
 EOF
 
+## migrate to NetworkManager
+nmcli conn migrate
+
 # Step 5
 sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
