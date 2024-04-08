@@ -48,7 +48,7 @@ sudo dnf install -y python-pyasn1 WALinuxAgent
 
 sudo systemctl enable waagent
 
-systemctl start waagent
+sudo systemctl start waagent
 
 sudo dnf install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
 
