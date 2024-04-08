@@ -25,6 +25,9 @@ NM_CONTROLLED=no
 
 EOF
 
+## migrate to NetworkManager
+sudo nmcli conn migrate
+
 sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
@@ -52,10 +55,6 @@ sudo systemctl start waagent
 
 sudo dnf install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
 
-sudo sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=auto/g' /etc/waagent.conf
-sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
-sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
-
 sudo echo "Adding mounts and disk_setup to init stage"
 sudo sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
 sudo sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
@@ -71,10 +70,10 @@ datasource:
         apply_network_config: False
 EOF
 
-if [[ -f /mnt/swapfile ]]; then
-    echo Removing swapfile - RHEL uses a swapfile by default
-    swapoff /mnt/swapfile
-    rm /mnt/swapfile -f
+if [[ -f /mnt/resource/swapfile ]]; then
+echo Removing swapfile - RHEL uses a swapfile by default
+swapoff /mnt/resource/swapfile
+rm /mnt/resource/swapfile -f
 fi
 
 echo "Add console log file"
