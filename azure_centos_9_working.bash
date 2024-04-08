@@ -37,10 +37,14 @@ grubby \
     --remove-args='rhgb quiet crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M' \
     --args='rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0'
 
-
 grub2-mkconfig -o /boot/grub2/grub.cfg
 
 # sudo grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+
+# Ensure that the SSH server is installed and configured to start at boot time
+sudo dnf install openssh-server
+sudo systemctl start sshd
+sudo systemctl enable sshd
 
 sudo dnf install -y python-pyasn1 WALinuxAgent
 
