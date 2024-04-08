@@ -98,8 +98,10 @@ cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
 output: {all: '| tee -a /var/log/cloud-init-output.log'}
 EOF
 
+# step 13: Swap configuration
 sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
 sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
 
 sudo rm -f /var/log/waagent.log
 sudo cloud-init clean
