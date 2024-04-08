@@ -9,6 +9,11 @@ sudo dnf install -y network-scripts
 # Enable network service
 sudo systemctl enable network.service
 
+# Ensure that the SSH server is installed and configured to start at boot time
+sudo dnf install openssh-server
+sudo systemctl start sshd
+sudo systemctl enable sshd
+
 # Step 3
 cat << 'EOF' | sudo tee /etc/default/networking
 NETWORKING=yes
