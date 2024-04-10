@@ -25,9 +25,6 @@ NM_CONTROLLED=no
 
 EOF
 
-## migrate to NetworkManager
-sudo nmcli conn migrate
-
 sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
@@ -43,9 +40,9 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 # sudo grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
 
 # # Ensure that the SSH server is installed and configured to start at boot time
-# sudo dnf install openssh-server
-# sudo systemctl start sshd
-# sudo systemctl enable sshd
+sudo dnf install openssh-server
+sudo systemctl start sshd
+sudo systemctl enable sshd
 
 sudo dnf install -y python-pyasn1 WALinuxAgent
 
@@ -98,4 +95,4 @@ sudo rm -f ~/.bash_history
 sudo history -c
 export HISTSIZE=0
 
-# sudo systemctl  poweroff
+sudo systemctl  poweroff
