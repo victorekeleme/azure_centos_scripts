@@ -47,6 +47,10 @@ sudo systemctl start waagent
 
 sudo dnf install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
 
+sudo sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=auto/g' /etc/waagent.conf
+sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
 sudo echo "Adding mounts and disk_setup to init stage"
 sudo sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
 sudo sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
@@ -76,10 +80,6 @@ cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
 # there without needing to look on the console.
 output: {all: '| tee -a /var/log/cloud-init-output.log'}
 EOF
-
-sudo sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=auto/g' /etc/waagent.conf
-sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
-sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
 
 sudo rm -f /var/log/waagent.log
 sudo cloud-init clean
