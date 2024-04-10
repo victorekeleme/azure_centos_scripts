@@ -39,11 +39,6 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 # sudo grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
 
-# Ensure that the SSH server is installed and configured to start at boot time
-sudo dnf install openssh-server
-sudo systemctl start sshd
-sudo systemctl enable sshd
-
 sudo dnf install -y python-pyasn1 WALinuxAgent
 
 sudo systemctl enable waagent
@@ -51,10 +46,6 @@ sudo systemctl enable waagent
 sudo systemctl start waagent
 
 sudo dnf install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
-
-sudo sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=auto/g' /etc/waagent.conf
-sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
-sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
 
 sudo echo "Adding mounts and disk_setup to init stage"
 sudo sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
@@ -86,6 +77,7 @@ cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
 output: {all: '| tee -a /var/log/cloud-init-output.log'}
 EOF
 
+sudo sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=auto/g' /etc/waagent.conf
 sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
 sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
 
