@@ -42,10 +42,10 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 # sudo grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
 
-# Ensure that the SSH server is installed and configured to start at boot time
-sudo dnf install openssh-server
-sudo systemctl start sshd
-sudo systemctl enable sshd
+# # Ensure that the SSH server is installed and configured to start at boot time
+# sudo dnf install openssh-server
+# sudo systemctl start sshd
+# sudo systemctl enable sshd
 
 sudo dnf install -y python-pyasn1 WALinuxAgent
 
