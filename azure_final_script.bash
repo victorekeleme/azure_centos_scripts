@@ -98,6 +98,4 @@ sudo rm -f ~/.bash_history
 sudo history -c
 export HISTSIZE=0
 
-sudo systemctl restart NetworkManager
-
 # sudo systemctl  poweroff
