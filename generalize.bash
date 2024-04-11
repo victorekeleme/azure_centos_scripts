@@ -99,12 +99,12 @@ EOF
 
 
 # Clean up
-# sudo rm -f /var/log/waagent.log
-# sudo cloud-init clean
-# sudo waagent -force -deprovision+user
-# sudo rm -f ~/.bash_history
-# export HISTSIZE=0
-# history -c
+sudo rm -f /var/log/waagent.log
+sudo cloud-init clean
+sudo waagent -force -deprovision+user
+sudo rm -f ~/.bash_history
+export HISTSIZE=0
+history -c
 
-# Shutdown the system
-# systemctl poweroff
+Shutdown the system
+systemctl poweroff
