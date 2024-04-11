@@ -44,7 +44,7 @@ sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 # Step 7
 sudo dnf -y update
 
-sudo systyemctl restart NetworkManager
+sudo systemctl restart NetworkManager
 
 # Step 8
 sudo grubby \
