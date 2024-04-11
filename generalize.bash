@@ -106,5 +106,5 @@ sudo rm -f ~/.bash_history
 export HISTSIZE=0
 history -c
 
-Shutdown the system
-systemctl poweroff
+# Shutdown the system
+# systemctl poweroff
