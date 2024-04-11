@@ -8,7 +8,11 @@ sudo dnf install wget openssh-server -y
 
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config_backup
 
-sudo wget -O /etc/ssh/sshd_config https://raw.githubusercontent.com/victorekeleme/azure_centos_scripts/main/sshd_config
+sudo rm -rf /etc/ssh/sshd_config
+
+sudo wget -O ./sshd_config https://raw.githubusercontent.com/victorekeleme/azure_centos_scripts/main/sshd_config
+
+sudo mv ./sshd_config /etc/ssh/sshd_config
 
 # Ensure that the SSH server is installed and configured to start at boot time
 sudo systemctl restart sshd
