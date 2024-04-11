@@ -3,6 +3,19 @@
 # verbosity
 set -x
 
+# Check if the script is being run with root privileges
+if [ "$(id -u)" -ne 0 ]; then
+    echo "This script must be run as root" >&2
+    exit 1
+fi
+
+# Backup the original sudoers file
+sudo cp /etc/sudoers /etc/sudoers.bak
+
+# Add NOPASSWD option for wheel group in sudoers file
+echo "%wheel ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers >/dev/null
+
+echo "Passwordless sudo access for members of the wheel group has been configured."
 
 sudo dnf install wget openssh-server -y
 
