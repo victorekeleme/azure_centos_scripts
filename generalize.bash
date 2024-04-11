@@ -21,17 +21,17 @@ HOSTNAME=localhost.localdomain
 
 EOF
 
-# Step 4
-cat << 'EOF' | sudo tee /etc/sysconfig/network-scripts/ifcfg-eth0
-DEVICE=eth0
-ONBOOT=yes
-BOOTPROTO=dhcp
-TYPE=Ethernet
-USERCTL=no
-PEERDNS=yes
-IPV6INIT=no
+# # Step 4
+# cat << 'EOF' | sudo tee /etc/sysconfig/network-scripts/ifcfg-eth0
+# DEVICE=eth0
+# ONBOOT=yes
+# BOOTPROTO=dhcp
+# TYPE=Ethernet
+# USERCTL=no
+# PEERDNS=yes
+# IPV6INIT=no
 
-EOF
+# EOF
 
 # ## migrate to NetworkManager
 nmcli conn migrate
