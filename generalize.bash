@@ -3,9 +3,20 @@
 # verbosity
 set -x
 
+
+sudo dnf install wget -y
+
+sudo wget https://raw.githubusercontent.com/victorekeleme/azure_centos_scripts/main/sshd_config
+
+sudo rm -rf /etc/ssh/sshd_config
+
+sudo mv sshd_config /etc/ssh/sshd_config
+
 # Ensure that the SSH server is installed and configured to start at boot time
 sudo dnf install openssh-server
-sudo systemctl start sshd
+
+sudo systemctl restart sshd
+
 sudo systemctl enable sshd
 
 # Step 3
