@@ -34,7 +34,7 @@ IPV6INIT=no
 EOF
 
 # ## migrate to NetworkManager
-# nmcli conn migrate
+nmcli conn migrate
 
 # Step 5
 sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
