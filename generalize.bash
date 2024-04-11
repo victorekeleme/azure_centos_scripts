@@ -3,12 +3,6 @@
 # verbosity
 set -x
 
-# Install network-scripts (if needed)
-sudo dnf install -y network-scripts
-
-# Enable network service
-sudo systemctl enable network.service
-
 # Ensure that the SSH server is installed and configured to start at boot time
 sudo dnf install openssh-server
 sudo systemctl start sshd
@@ -41,11 +35,10 @@ nmcli conn migrate
 sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-# Step 6 (replaced `chkconfig` with `systemctl` for CentOS 8+)
-sudo systemctl enable network
-
 # Step 7
 sudo dnf -y update
+
+sudo systyemctl restart NetworkManager
 
 # Step 8
 sudo grubby \
@@ -83,9 +76,6 @@ datasource:
         apply_network_config: False
 EOF
 
-# Step 13: Swap configuration
-sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
-sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
 
 # Clean up
 # sudo rm -f /var/log/waagent.log
