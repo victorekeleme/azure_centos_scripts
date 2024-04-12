@@ -27,6 +27,10 @@ sudo wget -O ./sshd_config https://raw.githubusercontent.com/victorekeleme/azure
 
 sudo mv ./sshd_config /etc/ssh/sshd_config
 
+sudo ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N '' -b 2048
+sudo ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N '' -b 256
+sudo ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N ''
+
 # Ensure that the SSH server is installed and configured to start at boot time
 # sudo systemctl restart sshd
 # sudo systemctl enable sshd
