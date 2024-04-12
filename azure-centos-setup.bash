@@ -42,8 +42,8 @@ dnf -y upgrade
 # # step 8
 grubby \
 	--update-kernel=ALL \
-	--remove-args='rhgb quiet crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M' \
-	--args='rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0'
+	--remove-args='rhgb quiet crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M edd' \
+	--args='rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 edd=off'
 
 # step 9 (no need to do this)
 grub2-mkconfig -o /boot/grub2/grub.cfg
@@ -110,4 +110,5 @@ cloud-init clean
 waagent -force -deprovision+user
 rm -f ~/.bash_history
 export HISTSIZE=0
-# systemctl  poweroff
+
+systemctl  poweroff
