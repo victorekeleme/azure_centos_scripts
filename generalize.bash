@@ -66,8 +66,6 @@ sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 # Step 7
 sudo dnf -y update
 
-sudo systemctl restart NetworkManager
-
 # Step 8
 sudo grubby \
     --update-kernel=ALL \
@@ -128,6 +126,8 @@ sudo waagent -force -deprovision+user
 sudo rm -f ~/.bash_history
 export HISTSIZE=0
 history -c
+
+sudo systemctl restart NetworkManager
 
 # Shutdown the system
 # systemctl poweroff
