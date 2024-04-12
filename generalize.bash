@@ -32,8 +32,8 @@ sudo ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N '' -b 256
 sudo ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N ''
 
 # Ensure that the SSH server is installed and configured to start at boot time
-# sudo systemctl restart sshd
-# sudo systemctl enable sshd
+sudo systemctl restart sshd
+sudo systemctl enable sshd
 
 # Step 3
 cat << 'EOF' | sudo tee /etc/default/networking
