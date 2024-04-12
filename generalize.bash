@@ -17,26 +17,6 @@ echo "%wheel ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers >/dev/null
 
 echo "Passwordless sudo access for members of the wheel group has been configured."
 
-# sudo dnf install wget openssh-server -y
-
-# sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config_backup
-
-# sudo rm -rf /etc/ssh/sshd_config
-
-# sudo wget -O ./sshd_config https://raw.githubusercontent.com/victorekeleme/azure_centos_scripts/main/sshd_config
-
-# sudo mv ./sshd_config /etc/ssh/sshd_config
-
-# sudo rm -rf /etc/ssh/ssh_host_*
-
-sudo ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N '' -b 2048
-sudo ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N '' -b 256
-sudo ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N ''
-
-# Ensure that the SSH server is installed and configured to start at boot time
-# sudo systemctl restart sshd
-# sudo systemctl enable sshd
-
 # Step 3
 cat << 'EOF' | sudo tee /etc/default/networking
 NETWORKING=yes
@@ -85,8 +65,7 @@ sudo dnf install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
 
 # Modify waagent.conf
 sudo sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=auto/g' /etc/waagent.conf
-sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
-sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
 
 # Modify cloud.cfg
 sudo sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
@@ -118,16 +97,17 @@ output: {all: '| tee -a /var/log/cloud-init-output.log'}
 
 EOF
 
+sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
 
 # Clean up
-sudo rm -f /var/log/waagent.log
-sudo cloud-init clean
-sudo waagent -force -deprovision+user
-sudo rm -f ~/.bash_history
-export HISTSIZE=0
-history -c
+# sudo rm -f /var/log/waagent.log
+# sudo cloud-init clean
+# sudo waagent -force -deprovision+user
+# sudo rm -f ~/.bash_history
+# export HISTSIZE=0
 
-sudo systemctl restart NetworkManager
+# sudo systemctl restart NetworkManager
 
 # Shutdown the system
-# systemctl poweroff
+systemctl poweroff
