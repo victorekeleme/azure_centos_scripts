@@ -19,13 +19,13 @@ echo "Passwordless sudo access for members of the wheel group has been configure
 
 # sudo dnf install wget openssh-server -y
 
-sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config_backup
+# sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config_backup
 
-sudo rm -rf /etc/ssh/sshd_config
+# sudo rm -rf /etc/ssh/sshd_config
 
-sudo wget -O ./sshd_config https://raw.githubusercontent.com/victorekeleme/azure_centos_scripts/main/sshd_config
+# sudo wget -O ./sshd_config https://raw.githubusercontent.com/victorekeleme/azure_centos_scripts/main/sshd_config
 
-sudo mv ./sshd_config /etc/ssh/sshd_config
+# sudo mv ./sshd_config /etc/ssh/sshd_config
 
 # sudo rm -rf /etc/ssh/ssh_host_*
 
