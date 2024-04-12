@@ -27,6 +27,8 @@ sudo wget -O ./sshd_config https://raw.githubusercontent.com/victorekeleme/azure
 
 sudo mv ./sshd_config /etc/ssh/sshd_config
 
+sudo rm -rf /etc/ssh/ssh_host_*
+
 sudo ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N '' -b 2048
 sudo ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N '' -b 256
 sudo ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N ''
