@@ -101,48 +101,57 @@ Before proceeding, ensure your custom VM meets the following Azure requirements:
 
 3. In the Settings menu, mount the CentOS 9 ISO image on the IDE Controller (DVD Drive) as shown below and Click apply.
 
-   ![image.png](/.attachments/image-bcee4e82-3b28-4b69-9a25-e442a1b770e7.png)
+  ![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/79adb283-a2f1-4adc-a0c8-5e293c65e797)
+
 
 4. Connect to the Virtual Machine by either Double Clicking or Right Clicking and Selecting Connect.
 
-   ![image.png](/.attachments/image-6dfa9f0a-15b3-4737-96fc-7f18e069f19e.png)
+   ![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/6376f1bb-e742-4495-be6e-8304603319bb)
+
 
 
 ## Step 5: Install CentOS on the Virtual Machine
 1. Start the Virtual Machine by Clicking Start.
-   ![image.png](/.attachments/image-74f1e781-c93f-415b-a5e6-1c92c291adbf.png)
+   ![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/0d67b9cd-c51a-4103-9698-3a12fdfde581)
 
 2. Follow the installation wizard as shown below:
 
    - Select "Install CentOS Stream 9".
-     ![image.png](/.attachments/image-63b27b96-2ccf-48bc-bcc7-60da6a35bb81.png)
+     ![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/a476c63e-9dab-497b-9285-5cf89901b117)
 
    - Select Preferred Language and Click Continue.
-     ![image.png](/.attachments/image-130c9e83-35a4-4d98-bfb3-93f5cb779881.png)
+     ![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/2196054f-cef0-497c-8fa6-6dfc1580a6e9)
+
 
    - CentOS Stream Installation Main Menu.
-     ![image.png](/.attachments/image-61ec6773-823e-4a31-8a35-34343e8fde26.png)
+     ![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/1bbe2c26-656f-4d30-a03a-d9abd56ad605)
+
 
    - Configure the Root password.
-     ![image.png](/.attachments/image-10b5acac-f5bf-4796-8e59-2c865511b7ea.png)
+     ![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/113757ab-0f51-4164-aa14-2b1220214989)
+
 
    - Create a New User (CentOS admin user) and make the user an Administrator.
-     ![image.png](/.attachments/image-a955b155-c32e-4a77-bce6-2ff1a06ab57f.png)
+     ![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/56c08f71-01df-41ef-8402-7aad3b9a5e15)
+
 
    - Select Software Base environment, in this I selected Minimal Install for quick installation and fewer packages.
-     ![image.png](/.attachments/image-1973ffef-e82e-4696-93ef-7a5389185e7a.png)
+     ![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/3333a6ad-cd51-4a4a-ab1c-9b122dacd7a6)
 
    - Click on Installation Destination => Select Custom and click Done.
-     ![image.png](/.attachments/image-c67eab63-e31e-4d55-890e-f8a272aa78d8.png)
+     ![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/c02e3a8e-7efd-4714-b3ae-e454d46767f3)
+
 
    - In the Manual Partitioning Page, create the /home, /boot, and / mount points with Standard partition. Note: all /home and / are xfs and /boot is ext4.
-     ![image.png](/.attachments/image-57fe08ff-4343-4867-86e6-e971786c2798.png)
+     ![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/ed94c693-7cdb-46f4-b366-66771c0da1ef)
 
    - Click Done and Accept Changes.
-     ![image.png](/.attachments/image-43d3c797-f275-4e35-be64-73cd81b2a925.png)
+     ![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/6c34b3b2-f4c8-469b-bad7-84e899974103)
+
 
    - Return to the Main Installation Menu and Click Begin Installation.
-     ![image.png](/.attachments/image-0d75e291-808a-4ebf-89ab-cdfe9a7b2ce7.png)
+     ![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/105b60d8-ebfd-44ea-909f-f150b0946680)
+
 
 
 
