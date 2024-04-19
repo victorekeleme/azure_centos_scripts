@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# This script sets up CentOS Stream 9 to be usable in Azure.
+# It, mostly, follows the reference provided but, also, improves the procedure a bit.
+#
+# Reference: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-upload-centos#centos-70
+
 # verbosity
 set -x
 
