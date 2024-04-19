@@ -47,21 +47,27 @@ Before proceeding, ensure your custom VM meets the following Azure requirements:
 4. Configure settings such as memory, networking, and processor as shown below:
 
 ### Specify Name and Location
+
 ![Specify Name and Location](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/7c5de811-37ee-4b85-b373-42220288d932)
 
 ### Specify the Generation
+
 ![Specify the Generation](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/e2960bb2-e99b-40d6-802a-34b0a6651714)
 
 ### Assign Memory
+
 ![Assign Memory](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/ac1d23c5-fb78-4c4b-a891-84762ca72d21)
 
 ### Configure Networking
+
 ![Configure Networking](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/87f250b3-7630-45a8-9523-2338c431a11f)
 
 ### Connect Virtual Hard Disk
+
 ![Connect Virtual Hard Disk](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/d80795bb-c1ff-4d2c-a63f-1404c26d4109)
 
 ### Summary
+
 ![Summary](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/9c8aea0f-bc89-4a8c-a9c8-d7dd2ee3d248)
 
 ## Step 4: Configure Newly Created Virtual Machine
@@ -82,33 +88,43 @@ Before proceeding, ensure your custom VM meets the following Azure requirements:
 2. Follow the installation wizard as shown below:
 
    - Select "Install CentOS Stream 9".
+   - 
      ![Install CentOS](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/a476c63e-9dab-497b-9285-5cf89901b117)
 
    - Select Preferred Language and Click Continue.
+   - 
      ![Select Language](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/2196054f-cef0-497c-8fa6-6dfc1580a6e9)
 
    - CentOS Stream Installation Main Menu.
+   - 
      ![Installation Menu](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/1bbe2c26-656f-4d30-a03a-d9abd56ad605)
 
    - Configure the Root password.
+   - 
      ![Root Password](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/113757ab-0f51-4164-aa14-2b1220214989)
 
    - Create a New User (CentOS admin user) and make the user an Administrator.
+   - 
      ![Create User](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/56c08f71-01df-41ef-8402-7aad3b9a5e15)
 
    - Select Software Base environment, in this I selected Minimal Install for quick installation and fewer packages.
+   - 
      ![Select Software](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/3333a6ad-cd51-4a4a-ab1c-9b122dacd7a6)
 
    - Click on Installation Destination => Select Custom and click Done.
+   - 
      ![Select Destination](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/c02e3a8e-7efd-4714-b3ae-e454d46767f3)
 
-   - In the Manual Partitioning Page, create the /home, /boot, and / mount points with Standard partition. Note: all /home and / are xfs and /boot is ext4.
+   - In the Manual Partitioning Page, create the /boot, and / mount points with Standard partition. Note: all /home and / are xfs and /boot is ext4.
+   - 
      ![Manual Partitioning](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/ed94c693-7cdb-46f4-b366-66771c0da1ef)
 
    - Click Done and Accept Changes.
+   - 
      ![Accept Changes](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/6c34b3b2-f4c8-469b-bad7-84e899974103)
 
    - Return to the Main Installation Menu and Click Begin Installation.
+   - 
      ![Begin Installation](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/105b60d8-ebfd-44ea-909f-f150b0946680)
 
 ## Step 6: Prepare the Virtual Machine for Generalization 
@@ -122,6 +138,7 @@ There are two ways to do this:
 2. Using Azure Storage Explorer (Recommended)
 
 Note: Ensure VHD is uploaded as a **Page Blob**.
+
 ![Upload VHD](https://1.bp.blogspot.com/-GwsZqSSGggU/XmK8ZwKylxI/AAAAAAAACP8/9-Id9Igpjf8FeYbretJ2Ad69pAfcY1amwCEwYBhgL/s1600/img-26.jpg)
 
 ## Step 8: Creating Virtual machine in Azure From VHD
