@@ -17,8 +17,8 @@ echo "%wheel ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers >/dev/null
 
 echo "Passwordless sudo access for members of the wheel group has been configured."
 
-# Step 3
-cat << 'EOF' | sudo tee /etc/default/networking
+# step 3
+cat << 'EOF' > /etc/default/networking
 NETWORKING=yes
 HOSTNAME=localhost.localdomain
 
@@ -41,7 +41,6 @@ nmcli conn migrate
 
 # Step 5
 sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
-# sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
 # Step 7
 sudo dnf -y update
@@ -55,6 +54,7 @@ sudo grubby \
 # Step 9
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
+
 # Step 11
 sudo dnf install -y python-pyasn1 WALinuxAgent
 sudo systemctl enable waagent
@@ -65,6 +65,8 @@ sudo dnf install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
 
 # Modify waagent.conf
 sudo sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=auto/g' /etc/waagent.conf
+sudo sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+sudo sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
 
 
 # Modify cloud.cfg
@@ -100,14 +102,13 @@ EOF
 sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
 sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
 
-# Clean up
-# sudo rm -f /var/log/waagent.log
-# sudo cloud-init clean
-# sudo waagent -force -deprovision+user
-# sudo rm -f ~/.bash_history
-# export HISTSIZE=0
-
-# sudo systemctl restart NetworkManager
+# Generalizing the Virutal Machine
+sudo rm -f /var/log/waagent.log
+sudo cloud-init clean
+sudo waagent -force -deprovision+user
+sudo rm -f ~/.bash_history
+export HISTSIZE=0
+history -c
 
 # Shutdown the system
 systemctl poweroff
