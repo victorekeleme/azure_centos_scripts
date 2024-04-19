@@ -29,28 +29,29 @@ Before proceeding, ensure your custom VM meets the following Azure requirements:
 ### Choose VHD Format:
 - Select the desired VHD format. For Azure compatibility, choose "VHD".
   
-  ![Choose VHD Format](/.attachments/image-862e45e3-6c87-4965-a22c-5585206e96b8.png)
+![Screenshot 2024-04-18 at 6 48 20 PM](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/660014ca-fe8d-4d56-af37-d9d5e715e495)
+
 
 ### Choose Disk Type
 - Choose the disk type based on your requirements. For Azure VMs, "Fixed Size" is recommended for better performance.
   
-  ![Choose Disk Type](/.attachments/image-94a3a10d-0571-4fd5-999c-46e8918f9cac.png)
+![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/33a6d145-41a3-42d1-ae77-eb619452cb93)
+
 
 ### Specify Name and Location
 - Provide a meaningful name for the VHD and choose the location where it will be stored on your local system.
   
-  ![Specify Name and Location](/.attachments/image-ca48db05-4219-4b83-8a3e-70ea18e477f8.png)
+![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/d5796fe3-b0fd-4157-9a5c-903d20bc16e7)
 
 ### Configure Disk
 - Set the size of the VHD according to your requirements. Ensure it meets the minimum disk space requirement for Azure VMs (e.g., 6GB or more).
 - Choose the location where the VHD will be stored. It's recommended to store it in a location with sufficient storage space.
   
-  ![Configure Disk](/.attachments/image-dcb0b513-41ae-4bfc-a584-9fe0c401ae95.png)
+![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/d2e346f8-6230-4270-b098-69e8779334c3)
 
 ### Summary
 - Review the summary of your VHD configuration settings. Ensure all settings are correct before proceeding.
   
-  ![Summary](/.attachments/image-37963f9a-1e35-4e28-8ee8-85f58a3f2fcf.png)
 
 ## Step 3: Create and Configure the Virtual Machine in Hyper-V
 1. Click on "Action" in the menu bar.
@@ -61,40 +62,48 @@ Before proceeding, ensure your custom VM meets the following Azure requirements:
 ### Specify Name and Location
 - Provide a meaningful name for the virtual machine and choose the location where its files will be stored on your local system.
   
-  ![Specify Name and Location](/.attachments/image-71d96188-9e14-45e5-9a4d-4679538e1312.png)
+![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/7c5de811-37ee-4b85-b373-42220288d932)
+
 
 ### Specify the Generation
 - Choose the generation of the virtual machine. For compatibility with Azure VMs, select "Generation 1".
   
-  ![Specify the Generation](/.attachments/image-70179038-f745-49b6-bf46-0a650b0c653c.png)
+![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/e2960bb2-e99b-40d6-802a-34b0a6651714)
+
 
 ### Assign Memory
 - Allocate the amount of memory (RAM) for the virtual machine. Ensure it meets the requirements for running CentOS 9 Stream and any additional software you plan to install.
   
-  ![Assign Memory](/.attachments/image-185cabf4-a485-44cd-a550-e22c88af70e9.png)
+![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/ac1d23c5-fb78-4c4b-a891-84762ca72d21)
+
 
 ### Configure Networking
 - Choose the networking settings for the virtual machine. Ensure it's configured to access the internet for software installation and updates.
   
-  ![Configure Networking](/.attachments/image-43007033-ca5b-4a23-bcd3-91de4073ab5b.png)
+![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/87f250b3-7630-45a8-9523-2338c431a11f)
 
 ### Connect Virtual Hard Disk
 - Attach the previously created virtual hard disk (VHD) to the virtual machine. This will serve as the storage for the operating system and data.
   
-  ![Connect Virtual Hard Disk](/.attachments/image-71f83318-b914-4e37-9020-4b886ffd75cb.png)
+![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/d80795bb-c1ff-4d2c-a63f-1404c26d4109)
+
 
 ### Summary
 - Review the summary of your virtual machine configuration settings. Ensure all settings are correct before proceeding.
   
-  ![Summary](/.attachments/image-1a55ce0a-21e0-4ee6-9871-48164d6235b9.png)
+![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/9c8aea0f-bc89-4a8c-a9c8-d7dd2ee3d248)
+
 
 ## Step 4: Configure Newly Created Virtual Machine
 1. Right-click on the Virtual Machine and select Settings.
-2. In the Settings menu, mount the CentOS 9 ISO image on the IDE Controller (DVD Drive) as shown below and Click apply.
+
+  ![image](https://github.com/victorekeleme/azure_centos_scripts/assets/74677661/17cc557e-5c15-45ea-b215-3c649c5fb8b4)
+
+3. In the Settings menu, mount the CentOS 9 ISO image on the IDE Controller (DVD Drive) as shown below and Click apply.
 
    ![image.png](/.attachments/image-bcee4e82-3b28-4b69-9a25-e442a1b770e7.png)
 
-3. Connect to the Virtual Machine by either Double Clicking or Right Clicking and Selecting Connect.
+4. Connect to the Virtual Machine by either Double Clicking or Right Clicking and Selecting Connect.
 
    ![image.png](/.attachments/image-6dfa9f0a-15b3-4737-96fc-7f18e069f19e.png)
 
